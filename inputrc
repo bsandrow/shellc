@@ -1,0 +1,33 @@
+# vim:set ft=readline et:
+
+# Load Global Config
+# ------------------
+$include /etc/inputrc
+
+# Settings
+# --------
+set bell-style none
+set show-all-if-ambiguous on
+set completion-ignore-case off
+set output-meta on
+set input-meta on
+set convert-meta off
+
+# Bindings
+# --------
+"\t": menu-complete
+
+# Rxvt Bindings
+# -------------
+$if term = 'rxvt'
+"\e[C": forward-char
+"\e[D": backward-char
+"\eOc": forward-word
+"\eOd": backward-word
+"\e[2~": quoted-insert
+"\e[3~": delete-char
+"\e[5~": beginning-of-history
+"\e[6~": end-of-history
+"\e[7~": beginning-of-line
+"\e[8~": end-of-line
+$endif
