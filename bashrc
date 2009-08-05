@@ -2,8 +2,8 @@
 
 # Vars
 # ----
-export BASHDIR="$HOME/.bash"
-export hostconf="$BASHDIR/$HOSTNAME"
+BASHDIR="$HOME/.bash"
+hostconf="$BASHDIR/$HOSTNAME"
 export GPG_TTY=`tty`
 
 # Aliases
