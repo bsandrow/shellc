@@ -1,0 +1,97 @@
+#     ==========================
+#       GNU SCREEN CONFIG FILE  
+#     ==========================
+#
+# Author:   Brandon Sandrowicz <bsandrow@gmail.com>
+# Comment:  My configuration settings for gnu screen
+
+#-----
+# Toggled Settings
+#-----
+startup_message off # turn off the startup message
+altscreen       on  # turn on the alternate screen buffer
+autodetach      on  # turn on autodetach (instead of dying) on HUP
+vbell           off # turn off visual bell
+defutf8         on  # turn on utf-8 support
+
+#-----
+# Message Strings
+#-----
+
+# Visual Bell Message
+#  - http://dotfiles.org/~xabbott/.screenrc
+#
+vbell_msg "[[[ ding ]]]"
+
+# Activity Message
+#  - displayed when there is activity on a monitored window
+#  - http://dotfiles.org/~xabbott/.screenrc
+activity "%c activity on window %n%f %t"
+
+# Bell Message
+#  - Non-visual bell message
+#  - ^G is the audio bell character
+#  - http://dotfiles.org/~xabbott/.screenrc
+bell_msg "%c bell in window %n%f %t"
+
+# Caption
+#  - At the bottom of each window
+#
+caption splitonly " window %n \'%t\'"
+#caption always "%n(%t) : %C"
+#caption always '%3n %t%? @%u%?%? [%h]%?%=%c'
+#caption always "%{= kc}%H (system load: %l)%-21=%{= .m}%D %d.%m.%Y %0c"
+
+#-----
+# Defined Settings
+#-----
+
+# ???
+defflow auto
+
+# define how much scrollback we want
+# (e.g. 30K lines)
+defscrollback 30000
+
+# make screen scrolling work with xterm
+# 
+# -- from http://www.mattcutts.com/blog/screen-power-tips-screenrc/ --
+#       From http://www4.informatik.uni-erlangen.de/~jnweiger/screen-faq.html
+#       Q: My xterm scrollbar does not work with screen.
+#       A: The problem is that xterm will not allow scrolling if the alternate
+#          text buffer is selected. The standard definitions of the termcap
+#          initialize capabilities ti and te switch to and from the alternate
+#          text buffer. (The scrollbar also does not work when you start e.g.
+#          ‘vi’).  You can tell screen not to use these initialisations by
+#          adding the line “termcapinfo xterm ti@:te@” to your ~/.screenrc
+#          file. 
+termcapinfo xterm ti@:te@
+
+#-----
+# Hardstatus
+#-----
+# - http://dotfiles.org/~xabbott/.screenrc 
+# - one line at the bottom of entire screen session
+# - *note* added a reverse video at the top because the caption lines were screwing up the hardstatus line
+
+hardstatus alwayslastline
+hardstatus string '%{=r gk}[ %{G}%H %{g}][ %{w}%?%-Lw%?%{=b kR}(%{W}%n*%f %t%?(%u)%?%{=b kR})%{= kw}%?%+Lw%? %{g}]%=%{=b C}%{W}'
+
+#-----
+# Keybindings
+#-----
+# - http://dotfiles.org/~xabbott/.screenrc
+
+# Remove some unsafe keybindings
+bind k
+bind W
+bind ^k
+bind .
+bind ^\
+bind \\
+bind ^h
+bind h
+
+# Create some safer ones instead
+bind 'K' kill
+bind 'W' windowlist
