@@ -2,8 +2,8 @@
 
 # Vars
 # ----
-export bash_dir="$HOME/.bash"
-export hostconf="$bash_dir/$HOSTNAME"
+export BASHDIR="$HOME/.bash"
+export hostconf="$BASHDIR/$HOSTNAME"
 export GPG_TTY=`tty`
 
 # Aliases
@@ -23,5 +23,5 @@ alias gls='git log --pretty=oneline --abbrev-commit'
 # External Code
 # -------------
 eval `dircolors --bourne-shell`
-. "$bash_dir/prompt"
+. "$BASHDIR/prompt"
 [ -f "$hostconf" ] && . "$hostconf"
