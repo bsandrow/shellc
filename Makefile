@@ -1,5 +1,5 @@
 ifeq "$(PREFIX)" ""
-export PREFIX="$(HOME)"
+export PREFIX=$(HOME)
 endif
 
 .PHONY: install
