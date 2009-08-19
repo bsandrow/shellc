@@ -10,3 +10,4 @@ install:
 	install -D -m 644 inputrc       "$(PREFIX)/.inputrc"
 	install -D -m 644 profile       "$(PREFIX)/.profile"
 	install -D -m 644 screenrc      "$(PREFIX)/.screenrc" 
+	install -D -m 644 bash/ssh_config_completion.bash "$(PREFIX)/.bash/ssh_config_completion.bash"
