@@ -1,4 +1,4 @@
-# vim:set ft=sh et tw=80
+# vim:ft=sh:et:tw=80:
 
 # Basic Vars
 # ----------
@@ -14,10 +14,10 @@ export VISUAL='vim'
 export PAGER='less'
 export LESS='-R'
 
-# Host-Specific Profile
-# ---------------------
-hostprofile="$HOME/.profile.`hostname`"
-test -f "$hostprofile" && . "$hostprofile"
+# Local Overrides
+# ---------------
+LOCAL="$HOME/.profile.local"
+test -f "$LOCAL" && . "$LOCAL"
 
 # Load Bash Config
 # ----------------
