@@ -5,6 +5,7 @@
 # ----
 BASHDIR="$HOME/.bash"
 LOCALRC="$BASHDIR/local"
+use_color_prompt=1
 export GPG_TTY=`tty`
 
 # Aliases

@@ -42,13 +42,22 @@ function check_git()
 
 function debian_default_prompt()
 {
-    export PS1="\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ "
+    if [ -z "$use_color_prompt" ]; then
+        export PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    else
+        export PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+    fi
 }
 
 function debian_default_remix()
 {
     PS1="\[\e]0;\u@\h: \w\a\]"
-    PS1="$PS1\[${debian_chroot:+($debian_chroot)}${GREEN}\u@\h:${BLUE}\w\]${RESET_COLORS}\n\]% "
+    if [ -z "$use_color_prompt" ]; then
+        export PS1='$PS1\[${debian_chroot:+($debian_chroot)}\u@\h:\w\n\]% '
+    else
+        export PS1='$PS1\[${debian_chroot:+($debian_chroot)}${GREEN}\u@\h:${BLUE}\w${RESET_COLORS}\n\]% '
+    fi
+
 }
 
 # Simple Prompt 1
