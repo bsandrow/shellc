@@ -18,7 +18,6 @@ alias egrepc='egrep --color=auto'
 alias pst='ps -u $USER wwf'
 alias dir='ls --format=vertical --group-directories-first'
 alias vdir='ls --format=long --group-directories-first'
-alias gls='git log --pretty=oneline --abbrev-commit'
 
 # External Code
 # -------------
