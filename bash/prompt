@@ -39,30 +39,30 @@ function check_git()
 }
 
 
-### Simple Prompt 1
-#
+# Simple Prompt 1
+# ---------------
 # Just a simple prompt that I like to use for remote hosts, I would trim it
 # down to just '> ', but I would lose the information reminding me of which
 # host I'm on.
-#
+
 function simple_prompt_1()
 {
     export PS1='\h> '
 }
 
-### Simple Prompt 2
-#
+# Simple Prompt 2
+# ---------------
 # Just another simple prompt that shows the username too.
-#
+
 function simple_prompt_2()
 {
     export PS1='\u@\h> '
 }
 
-### Topbar Prompt 1
-#
+# Topbar Prompt 1
+# ---------------
 # A prompt with a topbar on it.
-#
+
 function topbar_prompt_1()
 {
     RETURN_VAL=$?
@@ -124,10 +124,10 @@ function topbar_prompt_2()
     export PS1
 }
 
-### Topbar Prompt 3
-#
+# Topbar Prompt 3
+# ---------------
 # This one adds the git branch name and the 'git' after the path
-#
+
 function topbar_prompt_3()
 {
     RETURN_VAL=$?
@@ -162,6 +162,7 @@ function topbar_prompt_3()
 
     export PS1
 }
+
 PROMPT_COMMAND=topbar_prompt_1
 
 # vim:ft=sh
