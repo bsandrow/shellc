@@ -14,6 +14,8 @@ RESET_COLORS="\e[0m"
 #dynamic term title escape sequences
 t_start="\[\033]0;"
 t_end="\007\]"
+#t_start="\[\e]0;"
+#t_end="\a\]"
 
 function check_svn()
 {
@@ -38,6 +40,10 @@ function check_git()
     return 1
 }
 
+function debian_default_prompt()
+{
+    export PS1="\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ "
+}
 
 # Simple Prompt 1
 # ---------------
