@@ -13,6 +13,7 @@ export GPG_TTY=`tty`
 alias ls='ls -F --color=auto'
 alias ll='ls -l'
 alias la='ls -A'
+alias lss='ls -sh'
 alias llt='ls -lt'
 alias lltr='ls -ltr'
 alias grepc='grep --color=auto'
