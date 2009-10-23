@@ -1,3 +1,5 @@
+# we don't need any of this stuff on non-interactive sessions
+[ -z "$PS1" ] && return
 
 # Vars
 # ----
