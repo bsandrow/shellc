@@ -23,7 +23,7 @@ alias vdir='ls --format=long --group-directories-first'
 
 # External Code
 # -------------
-eval `dircolors --bourne-shell`
+test -x /usr/bin/dircolors && eval "`dircolors --bourne-shell`"
 . "$BASHDIR/prompt"
 test -f "$LOCALRC" && . "$LOCALRC"
 
