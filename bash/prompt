@@ -43,19 +43,19 @@ function check_git()
 function debian_default_prompt()
 {
     if [ -z "$use_color_prompt" ]; then
-        export PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-    else
         export PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+    else
+        export PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
     fi
 }
 
 function debian_default_remix()
 {
-    PS1="\[\e]0;\u@\h: \w\a\]"
+    title="\[\e]0;\u@\h: \w\a\]"
     if [ -z "$use_color_prompt" ]; then
-        export PS1='$PS1\[${debian_chroot:+($debian_chroot)}\u@\h:\w\n\]% '
+        export PS1="$title"'\[${debian_chroot:+($debian_chroot)}\u@\h:\w\]\n% '
     else
-        export PS1='$PS1\[${debian_chroot:+($debian_chroot)}${GREEN}\u@\h:${BLUE}\w${RESET_COLORS}\n\]% '
+        export PS1="$title"'\[${debian_chroot:+($debian_chroot)}'"${GREEN}\u@\h${RESET_COLORS}:${BLUE}\w${RESET_COLORS}\]\n% "
     fi
 
 }
