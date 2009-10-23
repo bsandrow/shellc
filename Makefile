@@ -2,12 +2,26 @@ ifeq "$(PREFIX)" ""
 export PREFIX=$(HOME)
 endif
 
-.PHONY: install
+all = bash \
+	  profile \
+	  screen \
+	  readline
 
-install:
-	install -D -m 644 bashrc        "$(PREFIX)/.bashrc"
-	install -D -m 644 bash/prompt   "$(PREFIX)/.bash/prompt"
-	install -D -m 644 inputrc       "$(PREFIX)/.inputrc"
-	install -D -m 644 profile       "$(PREFIX)/.profile"
-	install -D -m 644 screenrc      "$(PREFIX)/.screenrc" 
-	install -D -m 644 bash/ssh_config_completion.bash "$(PREFIX)/.bash/ssh_config_completion.bash"
+.PHONY: all $(all)
+
+all: $(all)
+
+bash:
+	install -d -m 755 "$(PREFIX)/.bash"
+	install -D -m 644 bashrc "$(PREFIX)/.bashrc"
+	cp bash/* "$(PREFIX)/.bash"
+	chmod 644 "$(PREFIX)/.bash/"*
+
+profile:
+	install -D -m 644 profile "$(PREFIX)/.profile"
+
+screen:
+	install -D -m 644 screenrc "$(PREFIX)/.screenrc"
+
+readline:
+	install -D -m 644 inputrc "$(PREFIX)/.inputrc"
