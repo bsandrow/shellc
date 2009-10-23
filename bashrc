@@ -3,7 +3,7 @@
 # Vars
 # ----
 BASHDIR="$HOME/.bash"
-hostconf="$BASHDIR/$HOSTNAME"
+LOCALRC="$BASHDIR/local"
 export GPG_TTY=`tty`
 
 # Aliases
@@ -24,4 +24,4 @@ alias gls='git log --pretty=oneline --abbrev-commit'
 # -------------
 eval `dircolors --bourne-shell`
 . "$BASHDIR/prompt"
-[ -f "$hostconf" ] && . "$hostconf"
+test -f "$LOCALRC" && . "$LOCALRC"
