@@ -25,6 +25,11 @@ alias pst='ps -u $USER wwf'
 alias dir='ls --format=vertical --group-directories-first'
 alias vdir='ls --format=long --group-directories-first'
 
+# Completion
+# ----------
+test -f "$BASHDIR/ssh_config_completion.bash" && . "$BASHDIR/ssh_config_completion.bash"
+test -f "$BASHDIR/git-completion.bash"        && . "$BASHDIR/git-completion.bash"
+
 # External Code
 # -------------
 test -x /usr/bin/dircolors && eval "`dircolors --bourne-shell`"
