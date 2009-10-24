@@ -84,9 +84,13 @@ hardstatus string '%{=r gk}[ %{G}%H %{g}][ %{w}%?%-Lw%?%{=b kR}(%{W}%n*%f %t%?(%
 
 # turn on xterm titles for screen[1].
 #
-termcapinfo xterm*|rxvt*|kterm*|Eterm* 'hs:ts=\E]0;:fs=\007:ds=\E]0;\007'
+#termcapinfo  * '' 'hs:ts=\E_:fs=\E\\:ds=\E_\E\\'
+#termcapinfo xterm*|rxvt*|kterm*|Eterm* 'hs:ts=\E]0;:fs=\007:ds=\E]0;\007'
+#termcapinfo xterm 'hs:ts=\E]2;:fs=\007:ds=\E]2;screen\007'
+termcapinfo * 'hs:ts=\E]2;:fs=\007:ds=\E]2;screen\007'
 defhstatus "screen ^E (^Et) | $USER@^EH"
 hardstatus off
+
 #-----
 # Keybindings
 #-----
