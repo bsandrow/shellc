@@ -29,6 +29,22 @@ activity "%c activity on window %n%f %t"    # activity message
 bell_msg "%c bell in window %n%f %t"      # non-visual bell (^G = beep) [4]
 
 # caption [4]
+#
+# Format                Explanation
+# ------                -----------
+# %{=r gk}[             reverse video green on black
+# %{G}%H                hostname in bold green text
+# %{g}]                 switch back to regular green for the closing sq. bracket
+# %{w}%?%-Lw%?          displays all windows to the left of the current window with white text
+# %{=b kR}(             starts the current window display with red '('
+# %{W}%n*%f %t          bold white window number, a '*' and the flags on the window and the title
+# %?(%u)%?              display other users on this window if they exist
+# ${=b kR})             the red closing paren
+# ${= kw}               clear the colors back to white on black
+# %?%+Lw%?              display the rest of the window list
+# %{g}]                 green closing sq. bracket
+# %=%{=b C}%{W}         pad the string to the end with bold cyan then bold white (???)
+#
 caption always '%{=r gk}[ %{G}%H %{g}][ %{w}%?%-Lw%?%{=b kR}(%{W}%n*%f %t%?(%u)%?%{=b kR})%{= kw}%?%+Lw%? %{g}]%=%{=b C}%{W}'
 
 # Tells xterm to allow scrolling in it's alternate buffer [5][6]
