@@ -5,7 +5,6 @@
 # ----
 BASHDIR="$HOME/.bash"
 LOCALRC="$BASHDIR/local"
-use_color_prompt=1
 export GPG_TTY=`tty`
 
 # Aliases
@@ -30,10 +29,15 @@ alias vdir='ls --format=long --group-directories-first'
 test -f "$BASHDIR/ssh_config_completion.bash" && . "$BASHDIR/ssh_config_completion.bash"
 test -f "$BASHDIR/git-completion.bash"        && . "$BASHDIR/git-completion.bash"
 
+# Bash Prompt Control
+# -------------------
+use_color_prompt=1
+dont_clobber_screen=1
+. "$BASHDIR/prompt"
+
 # External Code
 # -------------
 test -x /usr/bin/dircolors && eval "`dircolors --bourne-shell`"
-. "$BASHDIR/prompt"
 test -f "$LOCALRC" && . "$LOCALRC"
 
 # vim:ft=sh:
