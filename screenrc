@@ -1,5 +1,5 @@
 #     ==========================
-#       GNU SCREEN CONFIG FILE  
+#       GNU SCREEN CONFIG FILE
 #     ==========================
 #
 # Author:   Brandon Sandrowicz <bsandrow@gmail.com>
@@ -8,95 +8,41 @@
 # references
 # ----------
 #  [1]: http://aperiodic.net/screen/faq#how_can_screen_use_xterm_s_title_bar
+#  [2]: http://www.fwaggle.org/blog/internet/screen-irssi-xterm-titles
+#  [3]: http://pastebin.com/m64253923
+#  [4]: http://dotfiles.org/~xabbott/.screenrc
+#  [5]: http://www4.informatik.uni-erlangen.de/~jnweiger/screen-faq.html
+#  [6]: http://www.mattcutts.com/blog/screen-power-tips-screenrc/
 
-#-----
-# Toggled Settings
-#-----
-startup_message off # turn off the startup message
-altscreen       on  # turn on the alternate screen buffer
-autodetach      on  # turn on autodetach (instead of dying) on HUP
-vbell           off # turn off visual bell
-defutf8         on  # turn on utf-8 support
 
-#-----
-# Message Strings
-#-----
+# basic settings
+# --------------
+startup_message off     # turn off the startup message
+altscreen       on      # turn on the alternate screen buffer
+autodetach      on      # turn on autodetach (instead of dying) on HUP
+vbell           off     # turn off visual bell
+defutf8         on      # turn on utf-8 support
+defscrollback   30000   # 30k of scrollback
 
-# Visual Bell Message
-#  - http://dotfiles.org/~xabbott/.screenrc
-#
-vbell_msg "[[[ ding ]]]"
+vbell_msg "[[[ ding ]]]"                    # visual bell msg
+activity "%c activity on window %n%f %t"    # activity message
+bell_msg "%c bell in window %n%f %t"      # non-visual bell (^G = beep) [4]
 
-# Activity Message
-#  - displayed when there is activity on a monitored window
-#  - http://dotfiles.org/~xabbott/.screenrc
-activity "%c activity on window %n%f %t"
+# caption [4]
+caption always '%{=r gk}[ %{G}%H %{g}][ %{w}%?%-Lw%?%{=b kR}(%{W}%n*%f %t%?(%u)%?%{=b kR})%{= kw}%?%+Lw%? %{g}]%=%{=b C}%{W}'
 
-# Bell Message
-#  - Non-visual bell message
-#  - ^G is the audio bell character
-#  - http://dotfiles.org/~xabbott/.screenrc
-bell_msg "%c bell in window %n%f %t"
-
-# Caption
-#  - At the bottom of each window
-#
-caption splitonly " window %n \'%t\'"
-#caption always "%n(%t) : %C"
-#caption always '%3n %t%? @%u%?%? [%h]%?%=%c'
-#caption always "%{= kc}%H (system load: %l)%-21=%{= .m}%D %d.%m.%Y %0c"
-
-#-----
-# Defined Settings
-#-----
-
-# ???
-defflow auto
-
-# define how much scrollback we want
-# (e.g. 30K lines)
-defscrollback 30000
-
-# make screen scrolling work with xterm
-# 
-# -- from http://www.mattcutts.com/blog/screen-power-tips-screenrc/ --
-#       From http://www4.informatik.uni-erlangen.de/~jnweiger/screen-faq.html
-#       Q: My xterm scrollbar does not work with screen.
-#       A: The problem is that xterm will not allow scrolling if the alternate
-#          text buffer is selected. The standard definitions of the termcap
-#          initialize capabilities ti and te switch to and from the alternate
-#          text buffer. (The scrollbar also does not work when you start e.g.
-#          ‘vi’).  You can tell screen not to use these initialisations by
-#          adding the line “termcapinfo xterm ti@:te@” to your ~/.screenrc
-#          file. 
+# Tells xterm to allow scrolling in it's alternate buffer [5][6]
 termcapinfo xterm ti@:te@
 
-
-#-----
-# Hardstatus
-#-----
-# - http://dotfiles.org/~xabbott/.screenrc 
-# - one line at the bottom of entire screen session
-# - *note* added a reverse video at the top because the caption lines were screwing up the hardstatus line
-
-hardstatus alwayslastline
-hardstatus string '%{=r gk}[ %{G}%H %{g}][ %{w}%?%-Lw%?%{=b kR}(%{W}%n*%f %t%?(%u)%?%{=b kR})%{= kw}%?%+Lw%? %{g}]%=%{=b C}%{W}'
-
-# turn on xterm titles for screen[1].
-#
-#termcapinfo  * '' 'hs:ts=\E_:fs=\E\\:ds=\E_\E\\'
-#termcapinfo xterm*|rxvt*|kterm*|Eterm* 'hs:ts=\E]0;:fs=\007:ds=\E]0;\007'
-#termcapinfo xterm 'hs:ts=\E]2;:fs=\007:ds=\E]2;screen\007'
+# Set the xterm titlebar [1][2][3]
 termcapinfo * 'hs:ts=\E]2;:fs=\007:ds=\E]2;screen\007'
 defhstatus "screen ^E (^Et) | $USER@^EH"
 hardstatus off
 
-#-----
-# Keybindings
-#-----
-# - http://dotfiles.org/~xabbott/.screenrc
+# keybindings
+# -----------
 
-# Remove some unsafe keybindings
+# disable some 'unsafe' bindinds [4]
 bind k
 bind W
 bind ^k
@@ -106,6 +52,6 @@ bind \\
 bind ^h
 bind h
 
-# Create some safer ones instead
+# create a couple of more sane replacements [4]
 bind 'K' kill
 bind 'W' windowlist
