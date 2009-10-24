@@ -5,6 +5,10 @@
 # Author:   Brandon Sandrowicz <bsandrow@gmail.com>
 # Comment:  My configuration settings for gnu screen
 
+# references
+# ----------
+#  [1]: http://aperiodic.net/screen/faq#how_can_screen_use_xterm_s_title_bar
+
 #-----
 # Toggled Settings
 #-----
@@ -67,6 +71,7 @@ defscrollback 30000
 #          file. 
 termcapinfo xterm ti@:te@
 
+
 #-----
 # Hardstatus
 #-----
@@ -77,6 +82,11 @@ termcapinfo xterm ti@:te@
 hardstatus alwayslastline
 hardstatus string '%{=r gk}[ %{G}%H %{g}][ %{w}%?%-Lw%?%{=b kR}(%{W}%n*%f %t%?(%u)%?%{=b kR})%{= kw}%?%+Lw%? %{g}]%=%{=b C}%{W}'
 
+# turn on xterm titles for screen[1].
+#
+termcapinfo xterm*|rxvt*|kterm*|Eterm* 'hs:ts=\E]0;:fs=\007:ds=\E]0;\007'
+defhstatus "screen ^E (^Et) | $USER@^EH"
+hardstatus off
 #-----
 # Keybindings
 #-----
